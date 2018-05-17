@@ -1,6 +1,6 @@
 # lara-ore-request-log
 
-[![Build Status](https://travis-ci.org/railken/lara-ore-request-log.svg?branch=master)](https://travis-ci.org/railken/lara-ore-request-log)
+[![Build Status](https://travis-ci.org/railken/lara-ore-request-logger.svg?branch=master)](https://travis-ci.org/railken/lara-ore-request-logger)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A laravel package to save all incoming requests within the database
@@ -15,7 +15,7 @@ PHP 7.0.0 and later.
 You can install it via [Composer](https://getcomposer.org/) by typing the following command:
 
 ```bash
-composer require railken/lara-ore-request-log
+composer require railken/lara-ore-request-logger
 ```
 
 The package will automatically register itself.

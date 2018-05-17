@@ -6,8 +6,11 @@ services:
   - mysql
 
 addons:
+  sources:
+      - mysql-5.7-trusty
   apt:
     packages:
+      - mysql-server
       - libxml2-utils
       
 php:
