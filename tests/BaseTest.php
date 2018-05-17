@@ -3,6 +3,7 @@
 namespace Railken\LaraOre\RequestLogger\Tests;
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Route;
 
 abstract class BaseTest extends \Orchestra\Testbench\TestCase
 {
@@ -22,9 +23,11 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
         $dotenv = new \Dotenv\Dotenv(__DIR__.'/..', '.env');
         $dotenv->load();
 
-
-
         parent::setUp();
+
+        Route::get('test', function () {
+            return "bazinga";
+        })->middleware(\Railken\LaraOre\RequestLogger\RequestLoggerMiddleware::class);
 
         File::cleanDirectory(database_path("migrations/"));
 

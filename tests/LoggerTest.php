@@ -45,6 +45,15 @@ class ConfigTest extends BaseTest
         $this->commonTest($this->getManager(), $this->getParameters());
     }
 
+    /** @test */
+    public function it_should_log_request()
+    {
+        $this->get("test");
+        $resource = $this->getManager()->getRepository()->findOneBy(['method' => 'GET']);
+        $this->assertEquals(200, $resource->status);
+        $this->assertArraySubset(["body" => "bazinga"], json_decode($resource->response, true));
+    }
+
     public function testNotDefined()
     {
         $manager = $this->getManager();

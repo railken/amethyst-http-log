@@ -20,7 +20,7 @@ class RequestLog extends Model implements EntityContract
      *
      * @var array
      */
-    protected $fillable = ['id', 'request', 'response', 'category', 'url', 'method', 'ip', 'type'];
+    protected $fillable = ['id', 'request', 'response', 'category', 'url', 'method', 'ip', 'type', 'status'];
 
     /**
      * Creates a new instance of the model.
