@@ -2,7 +2,7 @@
 
 namespace Railken\LaraOre\RequestLogger\RequestLog\Attributes\Status\Exceptions;
 
-use Railken\LaraOre\RequestLog\Exceptions\RequestLogAttributeException;
+use Railken\LaraOre\RequestLogger\RequestLog\Exceptions\RequestLogAttributeException;
 
 class RequestLogStatusNotUniqueException extends RequestLogAttributeException
 {

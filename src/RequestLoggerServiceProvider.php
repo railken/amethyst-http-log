@@ -25,5 +25,4 @@ class RequestLoggerServiceProvider extends ServiceProvider
             ], 'migrations');
         }
     }
-
 }

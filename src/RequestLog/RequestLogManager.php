@@ -24,7 +24,7 @@ class RequestLogManager extends ModelManager
         Attributes\Ip\IpAttribute::class,
         Attributes\Request\RequestAttribute::class,
         Attributes\Response\ResponseAttribute::class,
-        Attributes\CreatedAt\CreatedAtAttribute::class, 
+        Attributes\CreatedAt\CreatedAtAttribute::class,
         Attributes\UpdatedAt\UpdatedAtAttribute::class,
         Attributes\Status\StatusAttribute::class,
     ];

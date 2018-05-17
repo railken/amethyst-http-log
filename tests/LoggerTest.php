@@ -30,7 +30,6 @@ class ConfigTest extends BaseTest
      */
     public function getParameters()
     {
-    
         $bag = new bag();
         $bag->set('type', 'inbound');
         $bag->set('method', "POST");
@@ -40,25 +39,25 @@ class ConfigTest extends BaseTest
         return $bag;
     }
 
-    public function testSuccessCommon()
+    /** @test */
+    public function it_will_work()
     {
         $this->commonTest($this->getManager(), $this->getParameters());
     }
 
     /** @test */
-    public function it_should_log_request()
+    public function it_will_log_request()
     {
         $this->get("test");
         $resource = $this->getManager()->getRepository()->findOneBy(['method' => 'GET']);
         $this->assertEquals(200, $resource->status);
         $this->assertArraySubset(["body" => "bazinga"], json_decode($resource->response, true));
     }
-
-    public function testNotDefined()
+    
+    /** @test */
+    public function it_will_return_not_defined_errors()
     {
         $manager = $this->getManager();
         $this->assertArraySubset([['code' => 'REQUEST_LOG_TYPE_NOT_DEFINED']], $manager->create($this->getParameters()->remove('type'))->getSimpleErrors()->toArray());
     }
-
-  
 }
