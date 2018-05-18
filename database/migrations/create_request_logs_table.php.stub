@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Schema\Blueprint;
 
 class CreateRequestLogsTable extends Migration
@@ -20,10 +21,11 @@ class CreateRequestLogsTable extends Migration
             $table->string('category')->default('default');
             $table->string('method')->nullable();
             $table->string('ip')->nullable();
-            $table->jsonb('request');
-            $table->jsonb('response');
+            $table->text('request');
+            $table->text('response');
             $table->integer('status')->nullable();
             $table->timestamps();
+
         });
     }
 

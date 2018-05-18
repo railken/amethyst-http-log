@@ -46,6 +46,15 @@ class LoggerTest extends BaseTest
     }
 
     /** @test */
+    public function it_will_search()
+    {
+        $this->get("test");
+        $results = $this->getManager()->getRepository()->newEntity()->search('bazinga')->get();
+        $this->assertEquals(1, $results->count());
+    }
+
+
+    /** @test */
     public function it_will_log_request()
     {
         $this->get("test");

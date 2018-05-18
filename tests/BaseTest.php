@@ -12,6 +12,8 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
         return [
             \Railken\Laravel\Manager\ManagerServiceProvider::class,
             \Railken\LaraOre\RequestLogger\RequestLoggerServiceProvider::class,
+            \Laravel\Scout\ScoutServiceProvider::class,
+            \Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class,
         ];
     }
 
@@ -31,19 +33,37 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
 
         File::cleanDirectory(database_path("migrations/"));
 
+        config("scout.mysql",[
+            'mode' => 'NATURAL_LANGUAGE',
+            'model_directories' => [app_path()],
+            'min_search_length' => 0,
+            'min_fulltext_search_length' => 4,
+            'min_fulltext_search_fallback' => 'LIKE',
+            'query_expansion' => false
+        ]);
+        config("scout.driver", "mysql");
+
+        $this->artisan('vendor:publish', [
+            '--provider' => 'Laravel\Scout\ScoutServiceProvider',
+        ]);
+
         $this->artisan('vendor:publish', [
             '--provider' => 'Railken\LaraOre\RequestLogger\RequestLoggerServiceProvider',
             '--tag' => 'config'
         ]);
-
 
         $this->artisan('vendor:publish', [
             '--provider' => 'Railken\LaraOre\RequestLogger\RequestLoggerServiceProvider',
             '--tag' => 'migrations'
         ]);
 
-
         $this->artisan('migrate:fresh');
         $this->artisan('migrate');
+
+
+        $this->artisan('scout:mysql-index', [
+            'model' => 'Railken\LaraOre\RequestLogger\RequestLog\RequestLog'
+        ]);
+
     }
 }
