@@ -33,15 +33,6 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
 
         File::cleanDirectory(database_path("migrations/"));
 
-        config("scout.mysql",[
-            'mode' => 'NATURAL_LANGUAGE',
-            'model_directories' => [app_path()],
-            'min_search_length' => 0,
-            'min_fulltext_search_length' => 4,
-            'min_fulltext_search_fallback' => 'LIKE',
-            'query_expansion' => false
-        ]);
-        config("scout.driver", "mysql");
 
         $this->artisan('vendor:publish', [
             '--provider' => 'Laravel\Scout\ScoutServiceProvider',
@@ -65,5 +56,15 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
             'model' => 'Railken\LaraOre\RequestLogger\RequestLog\RequestLog'
         ]);
 
+
+        config([
+            'scout.mysql.mode' => 'NATURAL_LANGUAGE',
+            'scout.mysql.model_directories' => [app_path()],
+            'scout.mysql.min_search_length' => 0,
+            'scout.mysql.min_fulltext_search_length' => 4,
+            'scout.mysql.min_fulltext_search_fallback' => 'LIKE',
+            'scout.mysql.query_expansion' => false
+        ]);
+        config("scout.driver", "mysql");
     }
 }
