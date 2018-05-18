@@ -9,7 +9,7 @@ use Railken\LaraOre\RequestLogger\RequestLog\RequestLogManager;
  * Testing logs
  * Attributes
  */
-class ConfigTest extends BaseTest
+class LoggerTest extends BaseTest
 {
     use Traits\CommonTrait;
     
