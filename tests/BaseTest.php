@@ -40,12 +40,14 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
 
         $this->artisan('vendor:publish', [
             '--provider' => 'Railken\LaraOre\RequestLogger\RequestLoggerServiceProvider',
-            '--tag' => 'config'
+            '--tag' => 'config',
+            '--force' => true,
         ]);
 
         $this->artisan('vendor:publish', [
             '--provider' => 'Railken\LaraOre\RequestLogger\RequestLoggerServiceProvider',
-            '--tag' => 'migrations'
+            '--tag' => 'migrations',
+            '--force' => true,
         ]);
 
         $this->artisan('migrate:fresh');

@@ -53,7 +53,6 @@ class LoggerTest extends BaseTest
         $this->assertEquals(1, $results->count());
     }
 
-
     /** @test */
     public function it_will_log_request()
     {
@@ -68,5 +67,14 @@ class LoggerTest extends BaseTest
     {
         $manager = $this->getManager();
         $this->assertArraySubset([['code' => 'REQUEST_LOG_TYPE_NOT_DEFINED']], $manager->create($this->getParameters()->remove('type'))->getSimpleErrors()->toArray());
+    }
+
+    /** @test */
+    public function it_will_not_log_request()
+    {
+        $this->get("oauth");
+        $resource = $this->getManager()->getRepository()->findOneBy(['method' => 'GET']);
+        $this->assertEquals(null, $resource);
+        die();
     }
 }
