@@ -56,11 +56,9 @@ class RequestLogManager extends ModelManager
 
     public function log($type, $category, Request $request, Response $response)
     {
-        
-        
         $blacklist = config('ore.request_logger.blacklist');
 
-        $params = (new Collection($request->all()))->filter(function($value, $key) use($blacklist) {
+        $params = (new Collection($request->all()))->filter(function ($value, $key) use ($blacklist) {
             return !preg_match($blacklist, $key);
         });
         
