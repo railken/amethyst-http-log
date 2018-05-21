@@ -21,8 +21,8 @@ class CreateRequestLogsTable extends Migration
             $table->string('category')->default('default');
             $table->string('method')->nullable();
             $table->string('ip')->nullable();
-            $table->text('request');
-            $table->text('response');
+            $table->longtext('request');
+            $table->longtext('response');
             $table->integer('status')->nullable();
             $table->timestamps();
 

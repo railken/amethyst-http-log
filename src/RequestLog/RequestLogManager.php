@@ -7,6 +7,7 @@ use Railken\Laravel\Manager\ModelManager;
 use Railken\Laravel\Manager\Tokens;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Collection;
 
 class RequestLogManager extends ModelManager
 {
@@ -55,6 +56,14 @@ class RequestLogManager extends ModelManager
 
     public function log($type, $category, Request $request, Response $response)
     {
+        
+        
+        $blacklist = config('ore.request_logger.blacklist');
+
+        $params = (new Collection($request->all()))->filter(function($value, $key) use($blacklist) {
+            return !preg_match($blacklist, $key);
+        });
+        
         $this->create([
             'type'     => $type,
             'category' => $category,
@@ -62,8 +71,8 @@ class RequestLogManager extends ModelManager
             'url'      => $request->path(),
             'ip'       => $request->ip(),
             'status'   => $response->status(),
-            'request'  => json_encode(['headers' => $request->headers->all(), 'body' => $request->all()]),
-            'response' => json_encode(['headers' => $response->headers->all(), 'body' => $response->original]),
+            'request'  => ['headers' => $request->headers->all(), 'body' => $params],
+            'response' => ['headers' => $response->headers->all(), 'body' => $response->original],
         ]);
     }
 }

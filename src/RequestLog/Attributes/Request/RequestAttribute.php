@@ -60,8 +60,6 @@ class RequestAttribute extends BaseAttribute
      */
     public function valid(EntityContract $entity, $value)
     {
-        json_decode($value);
-
-        return json_last_error() === JSON_ERROR_NONE;
+        return true;
     }
 }

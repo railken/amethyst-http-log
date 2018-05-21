@@ -34,8 +34,8 @@ class LoggerTest extends BaseTest
         $bag->set('type', 'inbound');
         $bag->set('method', "POST");
         $bag->set('url', "/awd");
-        $bag->set('request', json_encode(['body' => ['id' => 'foo']]));
-        $bag->set('response', json_encode(['body' => ['id' => 'foo']]));
+        $bag->set('request', ['body' => ['id' => 'foo']]);
+        $bag->set('response', ['body' => ['id' => 'foo']]);
         return $bag;
     }
 
@@ -56,10 +56,11 @@ class LoggerTest extends BaseTest
     /** @test */
     public function it_will_log_request()
     {
-        $this->get("test");
-        $resource = $this->getManager()->getRepository()->findOneBy(['method' => 'GET']);
+        $this->post("test", ['query' => 'foo']);
+        $resource = $this->getManager()->getRepository()->findOneBy(['method' => 'POST']);
+        $this->assertEquals('foo', $resource->request['body']['query']);
         $this->assertEquals(200, $resource->status);
-        $this->assertArraySubset(["body" => "bazinga"], json_decode($resource->response, true));
+        $this->assertArraySubset(["body" => "bazinga"], $resource->response);
     }
     
     /** @test */
@@ -72,9 +73,8 @@ class LoggerTest extends BaseTest
     /** @test */
     public function it_will_not_log_request()
     {
-        $this->get("oauth");
-        $resource = $this->getManager()->getRepository()->findOneBy(['method' => 'GET']);
-        $this->assertEquals(null, $resource);
-        die();
+        $this->post("test", ['password' => 'secret']);
+        $resource = $this->getManager()->getRepository()->findOneBy(['method' => 'POST']);
+        $this->assertEquals(false, isset($resource->request['body']['password']));
     }
 }

@@ -27,7 +27,7 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
 
         parent::setUp();
 
-        Route::get('test', function () {
+        Route::any('test', function () {
             return "bazinga";
         })->middleware(\Railken\LaraOre\RequestLogger\RequestLoggerMiddleware::class);
 
