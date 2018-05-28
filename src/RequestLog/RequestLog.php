@@ -9,7 +9,7 @@ use Laravel\Scout\Searchable;
 class RequestLog extends Model implements EntityContract
 {
     use Searchable;
-
+    
     /**
      * The table associated with the model.
      *

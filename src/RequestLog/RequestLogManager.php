@@ -12,6 +12,13 @@ use Illuminate\Support\Collection;
 class RequestLogManager extends ModelManager
 {
     /**
+     * Class name entity.
+     *
+     * @var string
+     */
+    public $entity = RequestLog::class;
+
+    /**
      * List of all attributes.
      *
      * @var array
