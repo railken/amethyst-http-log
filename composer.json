@@ -3,14 +3,14 @@
     "keywords": ["laravel", "lara-ore"],
     "license": "MIT",
     "require": {
-        "php": ">=7.1.0",
-        "phpstan/phpstan": "^0.9.2",
+        "php": ">=7.1",
         "railken/bag": "^1.2",
         "railken/laravel-manager": "^3.0.3",
         "laravel/scout": "^4.0",
         "yab/laravel-scout-mysql-driver": "^2.0"
     },
     "require-dev": {
+        "phpstan/phpstan": "^0.9.2",
         "phpunit/phpunit": "~7.0",
         "orchestra/testbench": "~3.6",
         "friendsofphp/php-cs-fixer": "^2.8.1",

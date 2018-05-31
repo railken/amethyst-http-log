@@ -7,7 +7,7 @@ A laravel package to save all incoming requests within the database
 
 # Requirements
 
-PHP 7.0.0 and later.
+PHP 7.1 and later.
 
 This package [laravel/scout](https://github.com/laravel/scout) is required.
 
