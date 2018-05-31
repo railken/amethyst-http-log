@@ -18,10 +18,17 @@
     },
     "autoload": {
         "psr-4" : {
-            "Railken\\LaraOre\\RequestLogger\\" : "src/"
+            "Railken\\LaraOre\\" : "src/"
         }
     },
     "autoload-dev": {
         "psr-4": { "Railken\\LaraOre\\RequestLogger\\Tests\\": "tests/" }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Railken\\LaraOre\\RequestLoggerServiceProvider"
+            ]
+        }
     }
 }

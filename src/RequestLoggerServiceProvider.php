@@ -1,6 +1,6 @@
 <?php
 
-namespace Railken\LaraOre\RequestLogger;
+namespace Railken\LaraOre;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
