@@ -1,6 +1,6 @@
 <?php
 
-namespace Railken\LaraOre\RequestLogger\RequestLog\Attributes\UpdatedAt;
+namespace Railken\LaraOre\RequestLog\Attributes\UpdatedAt;
 
 use Railken\Laravel\Manager\Attributes\BaseAttribute;
 use Railken\Laravel\Manager\Contracts\EntityContract;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Railken\LaraOre\RequestLogger;
+namespace Railken\LaraOre;
 
-use Railken\LaraOre\RequestLogger\RequestLog\RequestLogManager;
+use Railken\LaraOre\RequestLog\RequestLogManager;
 use Illuminate\Support\Collection;
 use Closure;
 

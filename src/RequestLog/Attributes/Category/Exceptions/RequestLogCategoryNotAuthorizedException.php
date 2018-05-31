@@ -1,8 +1,8 @@
 <?php
 
-namespace Railken\LaraOre\RequestLogger\RequestLog\Attributes\Category\Exceptions;
+namespace Railken\LaraOre\RequestLog\Attributes\Category\Exceptions;
 
-use Railken\LaraOre\RequestLogger\RequestLog\Exceptions\RequestLogAttributeException;
+use Railken\LaraOre\RequestLog\Exceptions\RequestLogAttributeException;
 
 class RequestLogCategoryNotAuthorizedException extends RequestLogAttributeException
 {

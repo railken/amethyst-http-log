@@ -3,7 +3,7 @@
 namespace Railken\LaraOre\RequestLogger\Tests;
 
 use Railken\Bag;
-use Railken\LaraOre\RequestLogger\RequestLog\RequestLogManager;
+use Railken\LaraOre\RequestLog\RequestLogManager;
 
 /**
  * Testing logs

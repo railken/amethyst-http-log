@@ -1,6 +1,6 @@
 <?php
 
-namespace Railken\LaraOre\RequestLogger\RequestLog\Attributes\Ip;
+namespace Railken\LaraOre\RequestLog\Attributes\Ip;
 
 use Railken\Laravel\Manager\Attributes\BaseAttribute;
 use Railken\Laravel\Manager\Contracts\EntityContract;

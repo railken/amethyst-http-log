@@ -1,8 +1,8 @@
 <?php
 
-namespace Railken\LaraOre\RequestLogger\RequestLog\Attributes\Type\Exceptions;
+namespace Railken\LaraOre\RequestLog\Attributes\Type\Exceptions;
 
-use Railken\LaraOre\RequestLogger\RequestLog\Exceptions\RequestLogAttributeException;
+use Railken\LaraOre\RequestLog\Exceptions\RequestLogAttributeException;
 
 class RequestLogTypeNotUniqueException extends RequestLogAttributeException
 {

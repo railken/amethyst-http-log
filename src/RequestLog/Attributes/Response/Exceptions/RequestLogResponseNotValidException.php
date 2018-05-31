@@ -1,8 +1,8 @@
 <?php
 
-namespace Railken\LaraOre\RequestLogger\RequestLog\Attributes\Response\Exceptions;
+namespace Railken\LaraOre\RequestLog\Attributes\Response\Exceptions;
 
-use Railken\LaraOre\RequestLogger\RequestLog\Exceptions\RequestLogAttributeException;
+use Railken\LaraOre\RequestLog\Exceptions\RequestLogAttributeException;
 
 class RequestLogResponseNotValidException extends RequestLogAttributeException
 {

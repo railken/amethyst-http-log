@@ -1,6 +1,6 @@
 <?php
 
-namespace Railken\LaraOre\RequestLogger\RequestLog;
+namespace Railken\LaraOre\RequestLog;
 
 use Illuminate\Support\Collection;
 use Railken\Bag;

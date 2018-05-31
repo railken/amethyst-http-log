@@ -25,4 +25,15 @@ class RequestLoggerServiceProvider extends ServiceProvider
             ], 'migrations');
         }
     }
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->app->register(\Railken\Laravel\Manager\ManagerServiceProvider::class);
+        $this->mergeConfigFrom(__DIR__.'/../config/ore.request_logger.php', 'ore.request_logger');
+    }
 }

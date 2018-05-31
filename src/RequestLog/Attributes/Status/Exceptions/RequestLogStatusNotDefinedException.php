@@ -1,8 +1,8 @@
 <?php
 
-namespace Railken\LaraOre\RequestLogger\RequestLog\Attributes\Status\Exceptions;
+namespace Railken\LaraOre\RequestLog\Attributes\Status\Exceptions;
 
-use Railken\LaraOre\RequestLogger\RequestLog\Exceptions\RequestLogAttributeException;
+use Railken\LaraOre\RequestLog\Exceptions\RequestLogAttributeException;
 
 class RequestLogStatusNotDefinedException extends RequestLogAttributeException
 {

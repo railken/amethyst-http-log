@@ -1,8 +1,8 @@
 <?php
 
-namespace Railken\LaraOre\RequestLogger\RequestLog\Attributes\UpdatedAt\Exceptions;
+namespace Railken\LaraOre\RequestLog\Attributes\UpdatedAt\Exceptions;
 
-use Railken\LaraOre\RequestLogger\RequestLog\Exceptions\RequestLogAttributeException;
+use Railken\LaraOre\RequestLog\Exceptions\RequestLogAttributeException;
 
 class RequestLogUpdatedAtNotAuthorizedException extends RequestLogAttributeException
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Railken\LaraOre\RequestLogger\RequestLog\Exceptions;
+namespace Railken\LaraOre\RequestLog\Exceptions;
 
 abstract class RequestLogAttributeException extends RequestLogException
 {

@@ -10,8 +10,7 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            \Railken\Laravel\Manager\ManagerServiceProvider::class,
-            \Railken\LaraOre\RequestLogger\RequestLoggerServiceProvider::class,
+            \Railken\LaraOre\RequestLoggerServiceProvider::class,
             \Laravel\Scout\ScoutServiceProvider::class,
             \Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class,
         ];
@@ -29,24 +28,16 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
 
         Route::any('test', function () {
             return "bazinga";
-        })->middleware(\Railken\LaraOre\RequestLogger\RequestLoggerMiddleware::class);
+        })->middleware(\Railken\LaraOre\RequestLoggerMiddleware::class);
 
         File::cleanDirectory(database_path("migrations/"));
-
 
         $this->artisan('vendor:publish', [
             '--provider' => 'Laravel\Scout\ScoutServiceProvider',
         ]);
 
         $this->artisan('vendor:publish', [
-            '--provider' => 'Railken\LaraOre\RequestLogger\RequestLoggerServiceProvider',
-            '--tag' => 'config',
-            '--force' => true,
-        ]);
-
-        $this->artisan('vendor:publish', [
-            '--provider' => 'Railken\LaraOre\RequestLogger\RequestLoggerServiceProvider',
-            '--tag' => 'migrations',
+            '--provider' => 'Railken\LaraOre\RequestLoggerServiceProvider',
             '--force' => true,
         ]);
 
@@ -55,9 +46,8 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
 
 
         $this->artisan('scout:mysql-index', [
-            'model' => 'Railken\LaraOre\RequestLogger\RequestLog\RequestLog'
+            'model' => 'Railken\LaraOre\RequestLog\RequestLog'
         ]);
-
 
         config([
             'scout.mysql.mode' => 'NATURAL_LANGUAGE',
