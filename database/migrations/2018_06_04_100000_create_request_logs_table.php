@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Config;
 
 class CreateRequestLogsTable extends Migration
 {
@@ -14,7 +14,7 @@ class CreateRequestLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ore_request_logs', function ($table) {
+        Schema::create(Config::get('ore.request_logger.table'), function ($table) {
             $table->increments('id');
             $table->string('type');
             $table->string('url');
@@ -36,6 +36,6 @@ class CreateRequestLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ore_request_logs');
+        Schema::dropIfExists(Config::get('ore.request_logger.table'));
     }
 }

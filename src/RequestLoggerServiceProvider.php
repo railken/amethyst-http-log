@@ -19,11 +19,7 @@ class RequestLoggerServiceProvider extends ServiceProvider
             __DIR__.'/../config/ore.request_logger.php' => config_path('ore.request_logger.php'),
         ], 'config');
 
-        if (!class_exists('CreateRequestLogsTable')) {
-            $this->publishes([
-                __DIR__.'/../database/migrations/create_request_logs_table.php.stub' => database_path('migrations/'.(new \DateTime())->format("Y_m_d_His.u").'_create_request_logs_table.php'),
-            ], 'migrations');
-        }
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
     /**
