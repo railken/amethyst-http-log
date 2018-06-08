@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Config;
+use Railken\LaraOre\Api\Support\Router;
 
 class RequestLoggerServiceProvider extends ServiceProvider
 {
@@ -37,6 +38,7 @@ class RequestLoggerServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(\Railken\Laravel\Manager\ManagerServiceProvider::class);
+        $this->app->register(\Railken\LaraOre\ApiServiceProvider::class);
         $this->app->register(\Railken\LaraOre\UserServiceProvider::class);
         $this->app->register(\Laravel\Scout\ScoutServiceProvider::class);
         $this->app->register(\Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class);
@@ -51,14 +53,10 @@ class RequestLoggerServiceProvider extends ServiceProvider
      */
     public function loadRoutes()
     {
-        Route::group([
-            'namespace' => 'Railken\LaraOre\Http\Controllers',
-            'prefix' => '/api/v1',
-        ], function ($router) {
-            Route::group([
-                'prefix' => '/admin/http-logs',
-                'middleware' => Config::get('ore.user.router.middlewares'),
-            ], function ($router) {
+        Router::group(function ($router) {
+            $router->group(array_merge(Config::get('ore.request_logger.router'), [
+                'namespace' => 'Railken\LaraOre\Http\Controllers',
+            ]), function ($router) {
                 $router->get('/', ['uses' => 'HttpLogsController@index']);
                 $router->post('/', ['uses' => 'HttpLogsController@create']);
                 $router->put('/{id}', ['uses' => 'HttpLogsController@update']);
