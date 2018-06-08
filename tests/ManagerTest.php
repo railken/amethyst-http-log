@@ -2,7 +2,6 @@
 
 namespace Railken\LaraOre\RequestLogger\Tests;
 
-use Railken\Bag;
 use Railken\LaraOre\RequestLog\RequestLogManager;
 use Railken\LaraOre\Support\Testing\ManagerTestableTrait;
 
@@ -18,22 +17,6 @@ class ManagerTest extends BaseTest
     public function getManager()
     {
         return new RequestLogManager();
-    }
-
-    /**
-     * Retrieve correct bag of parameters.
-     *
-     * @return Bag
-     */
-    public function getParameters()
-    {
-        $bag = new bag();
-        $bag->set('type', 'inbound');
-        $bag->set('method', "POST");
-        $bag->set('url', "/awd");
-        $bag->set('request', ['body' => ['id' => 'foo']]);
-        $bag->set('response', ['body' => ['id' => 'foo']]);
-        return $bag;
     }
 
     /** @test */
