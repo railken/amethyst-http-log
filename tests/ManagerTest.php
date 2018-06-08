@@ -4,14 +4,11 @@ namespace Railken\LaraOre\RequestLogger\Tests;
 
 use Railken\Bag;
 use Railken\LaraOre\RequestLog\RequestLogManager;
+use Railken\LaraOre\Support\Testing\ManagerTestableTrait;
 
-/**
- * Testing logs
- * Attributes
- */
-class LoggerTest extends BaseTest
+class ManagerTest extends BaseTest
 {
-    use Traits\CommonTrait;
+    use ManagerTestableTrait;
     
     /**
      * Retrieve basic url.
