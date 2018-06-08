@@ -53,16 +53,14 @@ class RequestLoggerServiceProvider extends ServiceProvider
      */
     public function loadRoutes()
     {
-        Router::group(function ($router) {
-            $router->group(array_merge(Config::get('ore.request_logger.router'), [
-                'namespace' => 'Railken\LaraOre\Http\Controllers',
-            ]), function ($router) {
-                $router->get('/', ['uses' => 'HttpLogsController@index']);
-                $router->post('/', ['uses' => 'HttpLogsController@create']);
-                $router->put('/{id}', ['uses' => 'HttpLogsController@update']);
-                $router->delete('/{id}', ['uses' => 'HttpLogsController@remove']);
-                $router->get('/{id}', ['uses' => 'HttpLogsController@show']);
-            });
+        Router::group(array_merge(Config::get('ore.request_logger.router'), [
+            'namespace' => 'Railken\LaraOre\Http\Controllers',
+        ]), function ($router) {
+            $router->get('/', ['uses' => 'HttpLogsController@index']);
+            $router->post('/', ['uses' => 'HttpLogsController@create']);
+            $router->put('/{id}', ['uses' => 'HttpLogsController@update']);
+            $router->delete('/{id}', ['uses' => 'HttpLogsController@remove']);
+            $router->get('/{id}', ['uses' => 'HttpLogsController@show']);
         });
     }
 }
