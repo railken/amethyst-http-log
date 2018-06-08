@@ -22,6 +22,9 @@ return [
 
     'router' => [
         'prefix' => 'admin/http-logs',
+        'middlewares' => [
+            'auth:api',
+        ]
     ]
 
 ];
