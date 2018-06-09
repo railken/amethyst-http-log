@@ -2,9 +2,8 @@
 
 namespace Railken\LaraOre;
 
-use Railken\LaraOre\RequestLog\RequestLogManager;
-use Illuminate\Support\Collection;
 use Closure;
+use Railken\LaraOre\RequestLog\RequestLogManager;
 
 class RequestLoggerMiddleware
 {

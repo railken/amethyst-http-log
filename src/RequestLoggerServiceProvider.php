@@ -2,15 +2,12 @@
 
 namespace Railken\LaraOre;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\ServiceProvider;
 use Railken\LaraOre\Api\Support\Router;
 
 class RequestLoggerServiceProvider extends ServiceProvider
 {
-
     /**
      * Bootstrap any application services.
      *

@@ -8,7 +8,7 @@ use Railken\LaraOre\Support\Testing\ManagerTestableTrait;
 class ManagerTest extends BaseTest
 {
     use ManagerTestableTrait;
-    
+
     /**
      * Retrieve basic url.
      *
@@ -28,7 +28,7 @@ class ManagerTest extends BaseTest
     /** @test */
     public function it_will_search()
     {
-        $this->get("test");
+        $this->get('test');
         $results = $this->getManager()->getRepository()->newEntity()->search('bazinga')->get();
         $this->assertEquals(1, $results->count());
     }
@@ -36,13 +36,13 @@ class ManagerTest extends BaseTest
     /** @test */
     public function it_will_log_request()
     {
-        $this->post("test", ['query' => 'foo']);
+        $this->post('test', ['query' => 'foo']);
         $resource = $this->getManager()->getRepository()->findOneBy(['method' => 'POST']);
         $this->assertEquals('foo', $resource->request['body']['query']);
         $this->assertEquals(200, $resource->status);
-        $this->assertArraySubset(["body" => "bazinga"], $resource->response);
+        $this->assertArraySubset(['body' => 'bazinga'], $resource->response);
     }
-    
+
     /** @test */
     public function it_will_return_not_defined_errors()
     {
@@ -53,7 +53,7 @@ class ManagerTest extends BaseTest
     /** @test */
     public function it_will_not_log_request()
     {
-        $this->post("test", ['password' => 'secret']);
+        $this->post('test', ['password' => 'secret']);
         $resource = $this->getManager()->getRepository()->findOneBy(['method' => 'POST']);
         $this->assertEquals(false, isset($resource->request['body']['password']));
     }

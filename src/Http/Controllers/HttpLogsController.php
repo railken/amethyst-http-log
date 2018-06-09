@@ -4,10 +4,10 @@ namespace Railken\LaraOre\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Railken\LaraOre\Api\Http\Controllers\RestController;
+use Railken\LaraOre\Api\Http\Controllers\Traits\RestCreateTrait;
 use Railken\LaraOre\Api\Http\Controllers\Traits\RestIndexTrait;
 use Railken\LaraOre\Api\Http\Controllers\Traits\RestRemoveTrait;
 use Railken\LaraOre\Api\Http\Controllers\Traits\RestShowTrait;
-use Railken\LaraOre\Api\Http\Controllers\Traits\RestCreateTrait;
 use Railken\LaraOre\Api\Http\Controllers\Traits\RestUpdateTrait;
 use Railken\LaraOre\RequestLog\RequestLogManager;
 

@@ -17,14 +17,13 @@ return [
     | Blacklist params sent with request (Regex)
     |--------------------------------------------------------------------------
     */
-	'blacklist' => "/password/",
-
+    'blacklist' => '/password/',
 
     'router' => [
-        'prefix' => 'admin/http-logs',
+        'prefix'      => 'admin/http-logs',
         'middlewares' => [
             'auth:api',
-        ]
-    ]
+        ],
+    ],
 
 ];

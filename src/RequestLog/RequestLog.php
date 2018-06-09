@@ -3,13 +3,13 @@
 namespace Railken\LaraOre\RequestLog;
 
 use Illuminate\Database\Eloquent\Model;
-use Railken\Laravel\Manager\Contracts\EntityContract;
 use Laravel\Scout\Searchable;
+use Railken\Laravel\Manager\Contracts\EntityContract;
 
 class RequestLog extends Model implements EntityContract
 {
     use Searchable;
-    
+
     /**
      * The table associated with the model.
      *
@@ -30,10 +30,10 @@ class RequestLog extends Model implements EntityContract
      * @var array
      */
     protected $casts = [
-        'request' => 'array',
+        'request'  => 'array',
         'response' => 'array',
     ];
-    
+
     /**
      * Creates a new instance of the model.
      *
