@@ -2,7 +2,6 @@
 
 namespace Railken\LaraOre\RequestLogger\Tests;
 
-use Railken\Bag;
 use Railken\LaraOre\Support\Testing\ApiTestableTrait;
 
 class ApiTest extends BaseTest
@@ -18,7 +17,7 @@ class ApiTest extends BaseTest
     {
         return '/api/v1/admin/http-logs';
     }
-    
+
     public function signIn()
     {
         $response = $this->post('/api/v1/sign-in', [
@@ -27,7 +26,7 @@ class ApiTest extends BaseTest
         ]);
 
         $access_token = json_decode($response->getContent())->data->access_token;
-        
+
         $this->withHeaders(['Authorization' => 'Bearer '.$access_token]);
 
         return $response;

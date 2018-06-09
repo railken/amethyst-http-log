@@ -2,12 +2,12 @@
 
 namespace Railken\LaraOre\RequestLog;
 
-use Railken\Laravel\Manager\Contracts\AgentContract;
-use Railken\Laravel\Manager\ModelManager;
-use Railken\Laravel\Manager\Tokens;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
+use Railken\Laravel\Manager\Contracts\AgentContract;
+use Railken\Laravel\Manager\ModelManager;
+use Railken\Laravel\Manager\Tokens;
 
 class RequestLogManager extends ModelManager
 {
@@ -68,7 +68,7 @@ class RequestLogManager extends ModelManager
         $params = (new Collection($request->all()))->filter(function ($value, $key) use ($blacklist) {
             return !preg_match($blacklist, $key);
         });
-        
+
         $this->create([
             'type'     => $type,
             'category' => $category,

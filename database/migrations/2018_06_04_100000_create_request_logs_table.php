@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Schema;
 
 class CreateRequestLogsTable extends Migration
 {
@@ -25,7 +24,6 @@ class CreateRequestLogsTable extends Migration
             $table->longtext('response');
             $table->integer('status')->nullable();
             $table->timestamps();
-
         });
     }
 
