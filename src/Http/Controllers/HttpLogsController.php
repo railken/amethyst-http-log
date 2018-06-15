@@ -24,7 +24,7 @@ class HttpLogsController extends RestController
      *
      * @var array
      */
-    public static $query = [
+    public $queryable = [
         'id',
         'url',
         'type',
@@ -42,7 +42,7 @@ class HttpLogsController extends RestController
      *
      * @var array
      */
-    public static $fillable = [
+    public $fillable = [
         'url',
         'type',
         'method',

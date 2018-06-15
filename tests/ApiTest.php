@@ -3,10 +3,12 @@
 namespace Railken\LaraOre\RequestLogger\Tests;
 
 use Railken\LaraOre\Support\Testing\ApiTestableTrait;
+use Illuminate\Support\Facades\Config;
 
 class ApiTest extends BaseTest
 {
     use ApiTestableTrait;
+
 
     /**
      * Retrieve basic url.
@@ -15,21 +17,7 @@ class ApiTest extends BaseTest
      */
     public function getBaseUrl()
     {
-        return '/api/v1/admin/http-logs';
-    }
-
-    public function signIn()
-    {
-        $response = $this->post('/api/v1/sign-in', [
-            'username' => 'admin@admin.com',
-            'password' => 'vercingetorige',
-        ]);
-
-        $access_token = json_decode($response->getContent())->data->access_token;
-
-        $this->withHeaders(['Authorization' => 'Bearer '.$access_token]);
-
-        return $response;
+        return Config::get('ore.api.router.prefix').Config::get('ore.request_logger.router.prefix');
     }
 
     /**
