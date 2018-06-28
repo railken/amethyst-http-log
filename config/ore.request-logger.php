@@ -10,7 +10,7 @@ return [
     | This is the table name used while interacting with the database
     |
     */
-    'table' => 'ore_users',
+    'table' => 'ore_request_logs',
 
     /*
     |--------------------------------------------------------------------------
