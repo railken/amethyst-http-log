@@ -37,6 +37,7 @@ class RequestLogManager extends ModelManager
         Attributes\UpdatedAt\UpdatedAtAttribute::class,
         Attributes\Status\StatusAttribute::class,
         Attributes\Time\TimeAttribute::class,
+        Attributes\QueriesCount\QueriesCountAttribute::class,
     ];
 
     /**
@@ -73,7 +74,7 @@ class RequestLogManager extends ModelManager
         parent::__construct($agent);
     }
 
-    public function log($type, $category, Request $request, Response $response, int $time)
+    public function log($type, $category, Request $request, Response $response, int $time, array $queries)
     {
         $blacklist = config('ore.request-logger.blacklist');
 
@@ -89,6 +90,7 @@ class RequestLogManager extends ModelManager
             'ip'       => $request->ip(),
             'status'   => $response->status(),
             'time'     => $time,
+            'queries_count' => count($queries),
             'request'  => ['headers' => $request->headers->all(), 'body' => $params],
             'response' => ['headers' => $response->headers->all(), 'body' => $response->original],
         ]);

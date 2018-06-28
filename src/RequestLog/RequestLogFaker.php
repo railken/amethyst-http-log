@@ -21,6 +21,7 @@ class RequestLogFaker
         $bag->set('request', ['body' => ['id' => 'foo']]);
         $bag->set('response', ['body' => ['id' => 'foo']]);
         $bag->set('time', 20);
+        $bag->set('queries_count', 2);
 
         return $bag;
     }

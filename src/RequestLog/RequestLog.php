@@ -30,7 +30,8 @@ class RequestLog extends Model implements EntityContract
         'ip',
         'type',
         'status',
-        'time'
+        'time',
+        'queries_count'
     ];
 
     /**

@@ -5,6 +5,7 @@ namespace Railken\LaraOre;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Railken\LaraOre\Api\Support\Router;
+use Railken\LaraOre\Http\Middleware\RequestLoggerMiddleware;
 
 class RequestLoggerServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,10 @@ class RequestLoggerServiceProvider extends ServiceProvider
         config(['ore.permission.managers' => array_merge(Config::get('ore.permission.managers', []), [
             \Railken\LaraOre\RequestLog\RequestLogManager::class,
         ])]);
+
+        $this->app->singleton(RequestLoggerMiddleware::class, function ($app) {
+            return new RequestLoggerMiddleware($app);
+        });
     }
 
     /**

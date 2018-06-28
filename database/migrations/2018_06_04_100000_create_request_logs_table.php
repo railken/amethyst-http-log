@@ -24,6 +24,7 @@ class CreateRequestLogsTable extends Migration
             $table->longtext('response');
             $table->integer('status')->nullable();
             $table->integer('time')->default(0);
+            $table->integer('queries_count')->default(0);
             $table->timestamps();
         });
     }

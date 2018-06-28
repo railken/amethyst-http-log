@@ -30,9 +30,9 @@ class ApiTest extends BaseTest
         $this->commonTest($this->getBaseUrl(), RequestLogFaker::make());
     }
 
-    /** @test */ 
-    public function it_will_log() 
+    /** @test */
+    public function it_will_log()
     {
         $this->get('test');
-    } 
+    }
 }
