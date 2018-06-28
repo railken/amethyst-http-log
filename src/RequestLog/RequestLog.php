@@ -4,6 +4,7 @@ namespace Railken\LaraOre\RequestLog;
 
 use Illuminate\Database\Eloquent\Model;
 use Railken\Laravel\Manager\Contracts\EntityContract;
+use Illuminate\Support\Facades\Config;
 
 class RequestLog extends Model implements EntityContract
 {
@@ -50,6 +51,7 @@ class RequestLog extends Model implements EntityContract
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->table = \Illuminate\Support\Facades\Config::get('ore.request_logger.table', 'ore_request_logs');
+        $this->table = \Illuminate\Support\Facades\Config::get('ore.request-logger.table');
+        $this->fillable = array_merge($this->fillable, array_keys(Config::get('ore.request-logger.attributes')));
     }
 }

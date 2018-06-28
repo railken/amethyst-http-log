@@ -8,6 +8,7 @@ use Illuminate\Support\Collection;
 use Railken\Laravel\Manager\Contracts\AgentContract;
 use Railken\Laravel\Manager\ModelManager;
 use Railken\Laravel\Manager\Tokens;
+use Illuminate\Support\Facades\Config;
 
 class RequestLogManager extends ModelManager
 {
@@ -54,17 +55,27 @@ class RequestLogManager extends ModelManager
      */
     public function __construct(AgentContract $agent = null)
     {
-        $this->setRepository(new RequestLogRepository($this));
-        $this->setSerializer(new RequestLogSerializer($this));
-        $this->setValidator(new RequestLogValidator($this));
-        $this->setAuthorizer(new RequestLogAuthorizer($this));
+        $this->entity = Config::get('ore.request-logger.entity');
+        $this->attributes = array_merge($this->attributes, array_values(Config::get('ore.request-logger.attributes')));
+        
+        $classRepository = Config::get('ore.request-logger.repository');
+        $this->setRepository(new $classRepository($this));
+
+        $classSerializer = Config::get('ore.request-logger.serializer');
+        $this->setSerializer(new $classSerializer($this));
+
+        $classAuthorizer = Config::get('ore.request-logger.authorizer');
+        $this->setAuthorizer(new $classAuthorizer($this));
+
+        $classValidator = Config::get('ore.request-logger.validator');
+        $this->setValidator(new $classValidator($this));
 
         parent::__construct($agent);
     }
 
     public function log($type, $category, Request $request, Response $response)
     {
-        $blacklist = config('ore.request_logger.blacklist');
+        $blacklist = config('ore.request-logger.blacklist');
 
         $params = (new Collection($request->all()))->filter(function ($value, $key) use ($blacklist) {
             return !preg_match($blacklist, $key);

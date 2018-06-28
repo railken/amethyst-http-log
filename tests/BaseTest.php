@@ -29,7 +29,7 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
         })->middleware(\Railken\LaraOre\Http\Middleware\RequestLoggerMiddleware::class);
 
         $this->artisan('migrate:fresh');
-        $this->artisan('vendor:publish', ['--provider' => 'Railken\LaraOre\RequestLoggerServiceProvider', '--force' => true]);
+        // $this->artisan('vendor:publish', ['--provider' => 'Railken\LaraOre\RequestLoggerServiceProvider', '--force' => true]);
         $this->artisan('migrate');
     }
 }

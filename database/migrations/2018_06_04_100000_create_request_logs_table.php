@@ -13,7 +13,7 @@ class CreateRequestLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create(Config::get('ore.request_logger.table'), function ($table) {
+        Schema::create(Config::get('ore.request-logger.table'), function ($table) {
             $table->increments('id');
             $table->string('type');
             $table->string('url');
@@ -35,6 +35,6 @@ class CreateRequestLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(Config::get('ore.request_logger.table'));
+        Schema::dropIfExists(Config::get('ore.request-logger.table'));
     }
 }
