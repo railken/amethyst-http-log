@@ -4,6 +4,7 @@ namespace Railken\LaraOre\RequestLogger\Tests;
 
 use Illuminate\Support\Facades\Config;
 use Railken\LaraOre\Support\Testing\ApiTestableTrait;
+use Railken\LaraOre\RequestLog\RequestLogFaker;
 
 class ApiTest extends BaseTest
 {
@@ -26,6 +27,6 @@ class ApiTest extends BaseTest
      */
     public function testSuccessCommon()
     {
-        $this->commonTest($this->getBaseUrl(), $this->getParameters());
+        $this->commonTest($this->getBaseUrl(), RequestLogFaker::make());
     }
 }

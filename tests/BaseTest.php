@@ -15,23 +15,6 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
     }
 
     /**
-     * Retrieve correct bag of parameters.
-     *
-     * @return Bag
-     */
-    public function getParameters()
-    {
-        $bag = new Bag();
-        $bag->set('type', 'inbound');
-        $bag->set('method', 'POST');
-        $bag->set('url', '/awd');
-        $bag->set('request', ['body' => ['id' => 'foo']]);
-        $bag->set('response', ['body' => ['id' => 'foo']]);
-
-        return $bag;
-    }
-
-    /**
      * Setup the test environment.
      */
     public function setUp()
@@ -46,7 +29,6 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
         })->middleware(\Railken\LaraOre\Http\Middleware\RequestLoggerMiddleware::class);
 
         $this->artisan('migrate:fresh');
-        $this->artisan('vendor:publish', ['--provider' => 'Laravel\Scout\ScoutServiceProvider']);
         $this->artisan('vendor:publish', ['--provider' => 'Railken\LaraOre\RequestLoggerServiceProvider', '--force' => true]);
         $this->artisan('migrate');
     }

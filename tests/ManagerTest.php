@@ -4,6 +4,7 @@ namespace Railken\LaraOre\RequestLogger\Tests;
 
 use Railken\LaraOre\RequestLog\RequestLogManager;
 use Railken\LaraOre\Support\Testing\ManagerTestableTrait;
+use Railken\LaraOre\RequestLog\RequestLogFaker;
 
 class ManagerTest extends BaseTest
 {
@@ -22,7 +23,7 @@ class ManagerTest extends BaseTest
     /** @test */
     public function it_will_work()
     {
-        $this->commonTest($this->getManager(), $this->getParameters());
+        $this->commonTest($this->getManager(), RequestLogFaker::make());
     }
 
     /** @test */
@@ -39,7 +40,7 @@ class ManagerTest extends BaseTest
     public function it_will_return_not_defined_errors()
     {
         $manager = $this->getManager();
-        $this->assertArraySubset([['code' => 'REQUEST_LOG_TYPE_NOT_DEFINED']], $manager->create($this->getParameters()->remove('type'))->getSimpleErrors()->toArray());
+        $this->assertArraySubset([['code' => 'REQUEST_LOG_TYPE_NOT_DEFINED']], $manager->create(RequestLogFaker::make()->remove('type'))->getSimpleErrors()->toArray());
     }
 
     /** @test */
