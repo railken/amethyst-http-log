@@ -16,7 +16,7 @@ class RequestLoggerServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/ore.request_logger.php' => config_path('ore.request_logger.php'),
+            __DIR__.'/../config/ore.request-logger.php' => config_path('ore.request-logger.php'),
         ], 'config');
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
@@ -36,11 +36,8 @@ class RequestLoggerServiceProvider extends ServiceProvider
     {
         $this->app->register(\Railken\Laravel\Manager\ManagerServiceProvider::class);
         $this->app->register(\Railken\LaraOre\ApiServiceProvider::class);
-        $this->app->register(\Railken\LaraOre\UserServiceProvider::class);
-        $this->app->register(\Laravel\Scout\ScoutServiceProvider::class);
-        $this->app->register(\Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class);
 
-        $this->mergeConfigFrom(__DIR__.'/../config/ore.request_logger.php', 'ore.request_logger');
+        $this->mergeConfigFrom(__DIR__.'/../config/ore.request-logger.php', 'ore.request-logger');
     }
 
     /**
@@ -50,14 +47,14 @@ class RequestLoggerServiceProvider extends ServiceProvider
      */
     public function loadRoutes()
     {
-        Router::group(array_merge(Config::get('ore.request_logger.router'), [
-            'namespace' => 'Railken\LaraOre\Http\Controllers',
-        ]), function ($router) {
-            $router->get('/', ['uses' => 'HttpLogsController@index']);
-            $router->post('/', ['uses' => 'HttpLogsController@create']);
-            $router->put('/{id}', ['uses' => 'HttpLogsController@update']);
-            $router->delete('/{id}', ['uses' => 'HttpLogsController@remove']);
-            $router->get('/{id}', ['uses' => 'HttpLogsController@show']);
+        Router::group(Config::get('ore.request-logger.http.router'), function ($router) {
+            $controller = Config::get('ore.request-logger.http.controller');
+            
+            $router->get('/', ['uses' => $controller . '@index']);
+            $router->post('/', ['uses' => $controller . '@create']);
+            $router->put('/{id}', ['uses' => $controller . '@update']);
+            $router->delete('/{id}', ['uses' => $controller . '@remove']);
+            $router->get('/{id}', ['uses' => $controller . '@show']);
         });
     }
 }

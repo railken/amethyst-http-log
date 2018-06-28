@@ -1,6 +1,6 @@
 <?php
 
-namespace Railken\LaraOre;
+namespace Railken\LaraOre\Http\Middleware;
 
 use Closure;
 use Railken\LaraOre\RequestLog\RequestLogManager;

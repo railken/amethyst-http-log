@@ -43,27 +43,11 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
 
         Route::any('test', function () {
             return 'bazinga';
-        })->middleware(\Railken\LaraOre\RequestLoggerMiddleware::class);
+        })->middleware(\Railken\LaraOre\Http\Middleware\RequestLoggerMiddleware::class);
 
         $this->artisan('migrate:fresh');
         $this->artisan('vendor:publish', ['--provider' => 'Laravel\Scout\ScoutServiceProvider']);
         $this->artisan('vendor:publish', ['--provider' => 'Railken\LaraOre\RequestLoggerServiceProvider', '--force' => true]);
-        $this->artisan('lara-ore:user:install');
         $this->artisan('migrate');
-
-        $this->artisan('scout:mysql-index', [
-            'model' => 'Railken\LaraOre\RequestLog\RequestLog',
-        ]);
-
-        config([
-            'scout.mysql.mode'                         => 'NATURAL_LANGUAGE',
-            'scout.mysql.model_directories'            => [app_path()],
-            'scout.mysql.min_search_length'            => 0,
-            'scout.mysql.min_fulltext_search_length'   => 4,
-            'scout.mysql.min_fulltext_search_fallback' => 'LIKE',
-            'scout.mysql.query_expansion'              => false,
-        ]);
-
-        config('scout.driver', 'mysql');
     }
 }

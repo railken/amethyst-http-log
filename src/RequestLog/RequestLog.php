@@ -3,12 +3,10 @@
 namespace Railken\LaraOre\RequestLog;
 
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
 use Railken\Laravel\Manager\Contracts\EntityContract;
 
 class RequestLog extends Model implements EntityContract
 {
-    use Searchable;
 
     /**
      * The table associated with the model.

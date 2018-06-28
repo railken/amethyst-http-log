@@ -4,13 +4,11 @@
 [![StyleCI](https://github.styleci.io/repos/133869570/shield?branch=master)](https://github.styleci.io/repos/133869570)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-A laravel package to save all incoming requests within the database
+This is a [lara-ore](https://github.com/railken/lara-ore) package
 
 # Requirements
 
 PHP 7.1 and later.
-
-This package [laravel/scout](https://github.com/laravel/scout) is required.
 
 ## Installation
 
@@ -22,36 +20,10 @@ composer require railken/lara-ore-request-logger
 
 The package will automatically register itself.
 
-You can publish the migration with:
+## Documentation
 
-```bash
-php artisan vendor:publish --provider="Railken\LaraOre\RequestLoggerServiceProvider" --tag="migrations"
-```
+[Read](docs/index.md)
 
-After the migration has been published you can create the migration-table by running the migrations:
+## Testing
 
-```bash
-php artisan migrate
-```
-You can publish the config-file with:
-
-```bash
-php artisan vendor:publish --provider="Railken\LaraOre\RequestLoggerServiceProvider" --tag="config"
-```
-
-## RequestLoguration
-```php
-
-return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Table
-    |--------------------------------------------------------------------------
-    |
-    | This is the table used to save logs to the database
-    |
-    */
-    'table' => 'ore_request_logs',
-];
-```
+Configure the .env file before launching `./vendor/bin/phpunit`
