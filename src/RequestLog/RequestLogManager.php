@@ -35,6 +35,7 @@ class RequestLogManager extends ModelManager
         Attributes\CreatedAt\CreatedAtAttribute::class,
         Attributes\UpdatedAt\UpdatedAtAttribute::class,
         Attributes\Status\StatusAttribute::class,
+        Attributes\Time\TimeAttribute::class,
     ];
 
     /**

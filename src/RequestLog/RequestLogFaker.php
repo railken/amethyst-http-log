@@ -20,6 +20,7 @@ class RequestLogFaker
         $bag->set('url', '/awd');
         $bag->set('request', ['body' => ['id' => 'foo']]);
         $bag->set('response', ['body' => ['id' => 'foo']]);
+        $bag->set('time', 20);
 
         return $bag;
     }

@@ -23,6 +23,7 @@ class CreateRequestLogsTable extends Migration
             $table->longtext('request');
             $table->longtext('response');
             $table->integer('status')->nullable();
+            $table->integer('time')->default(0);
             $table->timestamps();
         });
     }

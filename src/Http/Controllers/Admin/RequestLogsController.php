@@ -40,6 +40,7 @@ class RequestLogsController extends RestConfigurableController
         'request',
         'response',
         'ip',
+        'time',
         'created_at',
         'updated_at',
     ];
@@ -57,6 +58,7 @@ class RequestLogsController extends RestConfigurableController
         'request',
         'response',
         'ip',
+        'time',
     ];
 
     public function __construct(RequestLogManager $manager)

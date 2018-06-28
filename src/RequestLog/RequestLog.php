@@ -20,7 +20,17 @@ class RequestLog extends Model implements EntityContract
      *
      * @var array
      */
-    protected $fillable = ['id', 'request', 'response', 'category', 'url', 'method', 'ip', 'type', 'status'];
+    protected $fillable = [
+        'request',
+        'response',
+        'category',
+        'url',
+        'method',
+        'ip',
+        'type',
+        'status',
+        'time'
+    ];
 
     /**
      * The attributes that should be cast to native types.
