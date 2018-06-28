@@ -7,6 +7,7 @@ use Railken\LaraOre\RequestLog\RequestLogManager;
 
 class RequestLoggerMiddleware
 {
+
     public function handle($request, Closure $next)
     {
         return $next($request);
@@ -15,6 +16,6 @@ class RequestLoggerMiddleware
     public function terminate($request, $response)
     {
         $lm = new RequestLogManager();
-        $lm->log('inbound', 'api', $request, $response);
+        $lm->log('inbound', 'api', $request, $response, round((microtime(true) - LARAVEL_START) * 1000));
     }
 }

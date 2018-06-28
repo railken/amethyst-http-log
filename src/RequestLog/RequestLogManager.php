@@ -73,7 +73,7 @@ class RequestLogManager extends ModelManager
         parent::__construct($agent);
     }
 
-    public function log($type, $category, Request $request, Response $response)
+    public function log($type, $category, Request $request, Response $response, int $time)
     {
         $blacklist = config('ore.request-logger.blacklist');
 
@@ -88,6 +88,7 @@ class RequestLogManager extends ModelManager
             'url'      => $request->path(),
             'ip'       => $request->ip(),
             'status'   => $response->status(),
+            'time'     => $time,
             'request'  => ['headers' => $request->headers->all(), 'body' => $params],
             'response' => ['headers' => $response->headers->all(), 'body' => $response->original],
         ]);
