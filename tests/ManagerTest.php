@@ -37,13 +37,6 @@ class ManagerTest extends BaseTest
     }
 
     /** @test */
-    public function it_will_return_not_defined_errors()
-    {
-        $manager = $this->getManager();
-        $this->assertArraySubset([['code' => 'REQUEST_LOG_TYPE_NOT_DEFINED']], $manager->create(RequestLogFaker::make()->remove('type'))->getSimpleErrors()->toArray());
-    }
-
-    /** @test */
     public function it_will_not_log_request()
     {
         $this->post('test', ['password' => 'secret']);

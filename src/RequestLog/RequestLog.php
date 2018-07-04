@@ -24,11 +24,9 @@ class RequestLog extends Model implements EntityContract
     protected $fillable = [
         'request',
         'response',
-        'category',
         'url',
         'method',
         'ip',
-        'type',
         'status',
         'time',
         'queries_count'

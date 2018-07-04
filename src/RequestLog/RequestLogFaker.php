@@ -8,14 +8,13 @@ use Faker\Factory;
 class RequestLogFaker
 {
     /**
-     * @return array
+     * @return \Railken\Bag
      */
     public static function make()
     {
         $faker = Factory::create();
         
         $bag = new Bag();
-        $bag->set('type', 'inbound');
         $bag->set('method', 'POST');
         $bag->set('url', '/awd');
         $bag->set('request', ['body' => ['id' => 'foo']]);

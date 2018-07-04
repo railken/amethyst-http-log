@@ -15,9 +15,7 @@ class CreateRequestLogsTable extends Migration
     {
         Schema::create(Config::get('ore.request-logger.table'), function ($table) {
             $table->increments('id');
-            $table->string('type');
             $table->string('url');
-            $table->string('category')->default('default');
             $table->string('method')->nullable();
             $table->string('ip')->nullable();
             $table->longtext('request');

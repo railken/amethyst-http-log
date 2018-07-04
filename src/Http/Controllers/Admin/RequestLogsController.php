@@ -62,21 +62,4 @@ class RequestLogsController extends RestConfigurableController
         'time',
         'queries_count',
     ];
-
-    public function __construct(RequestLogManager $manager)
-    {
-        $this->manager = $manager;
-        $this->manager->setAgent($this->getUser());
-        parent::__construct();
-    }
-
-    /**
-     * Create a new instance for query.
-     *
-     * @return \Illuminate\Database\Query\Builder
-     */
-    public function getQuery()
-    {
-        return $this->manager->repository->getQuery();
-    }
 }

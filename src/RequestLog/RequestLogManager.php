@@ -26,8 +26,6 @@ class RequestLogManager extends ModelManager
      */
     protected $attributes = [
         Attributes\Id\IdAttribute::class,
-        Attributes\Type\TypeAttribute::class,
-        Attributes\Category\CategoryAttribute::class,
         Attributes\Url\UrlAttribute::class,
         Attributes\Method\MethodAttribute::class,
         Attributes\Ip\IpAttribute::class,
@@ -74,7 +72,7 @@ class RequestLogManager extends ModelManager
         parent::__construct($agent);
     }
 
-    public function log($type, $category, Request $request, Response $response, int $time, array $queries)
+    public function log(Request $request, Response $response, int $time, array $queries)
     {
         $blacklist = config('ore.request-logger.blacklist');
 
@@ -83,8 +81,6 @@ class RequestLogManager extends ModelManager
         });
 
         $this->create([
-            'type'     => $type,
-            'category' => $category,
             'method'   => $request->method(),
             'url'      => $request->path(),
             'ip'       => $request->ip(),

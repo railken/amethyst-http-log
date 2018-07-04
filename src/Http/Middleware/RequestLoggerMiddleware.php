@@ -32,6 +32,6 @@ class RequestLoggerMiddleware
     public function terminate($request, $response)
     {
         $lm = new RequestLogManager();
-        $lm->log('inbound', 'api', $request, $response, round(($this->now() - $this->time) * 1000), DB::getQueryLog());
+        $lm->log($request, $response, intval(round(($this->now() - $this->time) * 1000)), DB::getQueryLog());
     }
 }
