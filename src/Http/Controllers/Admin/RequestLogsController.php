@@ -2,14 +2,12 @@
 
 namespace Railken\LaraOre\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Railken\LaraOre\Api\Http\Controllers\RestConfigurableController;
 use Railken\LaraOre\Api\Http\Controllers\Traits\RestCreateTrait;
 use Railken\LaraOre\Api\Http\Controllers\Traits\RestIndexTrait;
 use Railken\LaraOre\Api\Http\Controllers\Traits\RestRemoveTrait;
 use Railken\LaraOre\Api\Http\Controllers\Traits\RestShowTrait;
 use Railken\LaraOre\Api\Http\Controllers\Traits\RestUpdateTrait;
-use Railken\LaraOre\RequestLog\RequestLogManager;
 
 class RequestLogsController extends RestConfigurableController
 {
@@ -20,7 +18,7 @@ class RequestLogsController extends RestConfigurableController
     use RestRemoveTrait;
 
     /**
-     * The config path
+     * The config path.
      *
      * @var string
      */

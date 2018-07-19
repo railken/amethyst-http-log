@@ -3,12 +3,11 @@
 namespace Railken\LaraOre\RequestLog;
 
 use Illuminate\Database\Eloquent\Model;
-use Railken\Laravel\Manager\Contracts\EntityContract;
 use Illuminate\Support\Facades\Config;
+use Railken\Laravel\Manager\Contracts\EntityContract;
 
 class RequestLog extends Model implements EntityContract
 {
-
     /**
      * The table associated with the model.
      *
@@ -29,7 +28,7 @@ class RequestLog extends Model implements EntityContract
         'ip',
         'status',
         'time',
-        'queries_count'
+        'queries_count',
     ];
 
     /**

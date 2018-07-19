@@ -2,8 +2,8 @@
 
 namespace Railken\LaraOre\RequestLog;
 
-use Railken\Bag;
 use Faker\Factory;
+use Railken\Bag;
 
 class RequestLogFaker
 {
@@ -13,7 +13,7 @@ class RequestLogFaker
     public static function make()
     {
         $faker = Factory::create();
-        
+
         $bag = new Bag();
         $bag->set('method', 'POST');
         $bag->set('url', '/awd');

@@ -3,12 +3,12 @@
 namespace Railken\LaraOre\RequestLog;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Config;
 use Railken\Laravel\Manager\Contracts\AgentContract;
 use Railken\Laravel\Manager\ModelManager;
 use Railken\Laravel\Manager\Tokens;
-use Illuminate\Support\Facades\Config;
+use Symfony\Component\HttpFoundation\Response;
 
 class RequestLogManager extends ModelManager
 {
@@ -56,7 +56,7 @@ class RequestLogManager extends ModelManager
     {
         $this->entity = Config::get('ore.request-logger.entity');
         $this->attributes = array_merge($this->attributes, array_values(Config::get('ore.request-logger.attributes')));
-        
+
         $classRepository = Config::get('ore.request-logger.repository');
         $this->setRepository(new $classRepository($this));
 
@@ -81,14 +81,14 @@ class RequestLogManager extends ModelManager
         });
 
         $this->create([
-            'method'   => $request->method(),
-            'url'      => $request->path(),
-            'ip'       => $request->ip(),
-            'status'   => $response->status(),
-            'time'     => $time,
+            'method'        => $request->method(),
+            'url'           => $request->path(),
+            'ip'            => $request->ip(),
+            'status'        => $response->getStatusCode(),
+            'time'          => $time,
             'queries_count' => count($queries),
-            'request'  => ['headers' => $request->headers->all(), 'body' => $params],
-            'response' => ['headers' => $response->headers->all(), 'body' => $response->original],
+            'request'       => ['headers' => $request->headers->all(), 'body' => $params],
+            'response'      => ['headers' => $response->headers->all(), 'body' => $response->getContent()],
         ]);
     }
 }

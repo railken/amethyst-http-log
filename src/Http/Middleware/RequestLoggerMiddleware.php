@@ -3,9 +3,9 @@
 namespace Railken\LaraOre\Http\Middleware;
 
 use Closure;
-use Railken\LaraOre\RequestLog\RequestLogManager;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Support\Facades\DB;
+use Railken\LaraOre\RequestLog\RequestLogManager;
 
 class RequestLoggerMiddleware
 {
@@ -26,6 +26,7 @@ class RequestLoggerMiddleware
     public function handle($request, Closure $next)
     {
         DB::enableQueryLog();
+
         return $next($request);
     }
 
