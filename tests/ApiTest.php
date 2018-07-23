@@ -3,8 +3,8 @@
 namespace Railken\LaraOre\RequestLogger\Tests;
 
 use Illuminate\Support\Facades\Config;
-use Railken\LaraOre\Support\Testing\ApiTestableTrait;
 use Railken\LaraOre\RequestLog\RequestLogFaker;
+use Railken\LaraOre\Support\Testing\ApiTestableTrait;
 
 class ApiTest extends BaseTest
 {
@@ -17,13 +17,11 @@ class ApiTest extends BaseTest
      */
     public function getBaseUrl()
     {
-        return Config::get('ore.api.router.prefix').Config::get('ore.request-logger.http.router.prefix');
+        return Config::get('ore.api.router.prefix').Config::get('ore.request-logger.http.admin.router.prefix');
     }
 
     /**
      * Test common requests.
-     *
-     * @return void
      */
     public function testSuccessCommon()
     {

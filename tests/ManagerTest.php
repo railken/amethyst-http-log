@@ -2,9 +2,9 @@
 
 namespace Railken\LaraOre\RequestLogger\Tests;
 
+use Railken\LaraOre\RequestLog\RequestLogFaker;
 use Railken\LaraOre\RequestLog\RequestLogManager;
 use Railken\LaraOre\Support\Testing\ManagerTestableTrait;
-use Railken\LaraOre\RequestLog\RequestLogFaker;
 
 class ManagerTest extends BaseTest
 {
