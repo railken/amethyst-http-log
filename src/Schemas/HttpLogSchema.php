@@ -25,6 +25,7 @@ class HttpLogSchema extends Schema
             Attributes\ArrayAttribute::make('response'),
             Attributes\TextAttribute::make('status'),
             Attributes\NumberAttribute::make('time'),
+            Attributes\LongTextAttribute::make('testable'),
             Attributes\TextAttribute::make('authenticable_type'),
             Attributes\TextAttribute::make('authenticable_id'),
             Attributes\CreatedAtAttribute::make(),

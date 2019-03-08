@@ -21,6 +21,7 @@ class CreateHttpLogsTable extends Migration
             $table->longtext('response')->nullable();
             $table->integer('status')->nullable();
             $table->integer('time')->default(0);
+            $table->longtext('testable')->nullable();
             $table->string('authenticable_type')->nullable();
             $table->integer('authenticable_id')->unsigned()->nullable();
             $table->timestamps();
