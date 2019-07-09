@@ -1,6 +1,6 @@
 <?php
 
-namespace Railken\Amethyst\Tests;
+namespace Amethyst\Tests;
 
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +15,7 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
 
         Route::any('test', function () {
             return 'bazinga';
-        })->middleware(\Railken\Amethyst\Http\Middleware\LogRequest::class);
+        })->middleware(\Amethyst\Http\Middleware\LogRequest::class);
 
         $this->artisan('migrate:fresh');
     }
@@ -23,7 +23,7 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            \Railken\Amethyst\Providers\HttpLogServiceProvider::class,
+            \Amethyst\Providers\HttpLogServiceProvider::class,
         ];
     }
 }

@@ -1,13 +1,13 @@
 <?php
 
-namespace Railken\Amethyst\Http\Middleware;
+namespace Amethyst\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
-use Railken\Amethyst\Managers\HttpLogManager;
+use Amethyst\Managers\HttpLogManager;
 
 class LogRequest
 {

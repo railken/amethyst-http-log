@@ -1,8 +1,8 @@
 # amethyst-http-log
 
-[![Build Status](https://travis-ci.org/railken/amethyst-http-log.svg?branch=master)](https://travis-ci.org/railken/amethyst-http-log)
+[![Build Status](https://travis-ci.org/amethyst-php/http-log.svg?branch=master)](https://travis-ci.org/amethyst-php/http-log)
 
-[Amethyst](https://github.com/railken/amethyst) package.
+[Amethyst](https://github.com/amethyst-php/amethyst) package.
 
 # Requirements
 
@@ -13,7 +13,7 @@ PHP 7.1 and later.
 You can install it via [Composer](https://getcomposer.org/) by typing the following command:
 
 ```bash
-composer require railken/amethyst-http-log
+composer require amethyst/http-log
 ```
 
 The package will automatically register itself.
