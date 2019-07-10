@@ -2,12 +2,12 @@
 
 namespace Amethyst\Http\Middleware;
 
+use Amethyst\Managers\HttpLogManager;
 use Closure;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
-use Amethyst\Managers\HttpLogManager;
 
 class LogRequest
 {
