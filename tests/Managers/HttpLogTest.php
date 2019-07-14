@@ -29,6 +29,8 @@ class HttpLogTest extends BaseTest
     public function it_will_log_request()
     {
         $this->post('test', ['query' => 'foo']);
+
+        /** @var \Amethyst\Models\HttpLog */
         $resource = $this->getManager()->getRepository()->findOneBy(['method' => 'POST']);
         $this->assertEquals('foo', $resource->request['body']['query']);
         $this->assertEquals(200, $resource->status);
@@ -39,6 +41,8 @@ class HttpLogTest extends BaseTest
     public function it_will_not_log_request()
     {
         $this->post('test', ['password' => 'secret']);
+
+        /** @var \Amethyst\Models\HttpLog */
         $resource = $this->getManager()->getRepository()->findOneBy(['method' => 'POST']);
         $this->assertEquals(false, isset($resource->request['body']['password']));
     }
