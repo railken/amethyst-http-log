@@ -49,7 +49,7 @@ class LogRequest
             'ip'                 => $request->ip(),
             'status'             => $response->getStatusCode(),
             'time'               => $time,
-            'authenticable_type' => Auth::user() ? get_class(Auth::user()) : null,
+            'authenticable_type' => Auth::user() ? app('amethyst')->tableize(Auth::user()) : null,
             'authenticable_id'   => Auth::id(),
             'request'            => ['headers' => $request->headers->all(), 'body' => $params],
             'response'           => ['headers' => $response->headers->all(), 'body' => $response->getContent()],
