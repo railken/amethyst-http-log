@@ -52,7 +52,7 @@ class LogRequest
      */
     public function handle($request, Closure $next)
     {
-        if (in_array($request->method(), ['GET', 'OPTIONS'])) {
+        if (in_array($request->method(), ['GET', 'OPTIONS'], true)) {
             return $next($request);
         }
 
@@ -77,7 +77,7 @@ class LogRequest
     }
 
     public function terminate($request, $response)
-    {   
+    {
         $id = $request->get('http-log-request-id');
 
         if (!$id) {
@@ -87,9 +87,9 @@ class LogRequest
         $time = intval(round(($this->now() - $this->time) * 1000));
 
         $this->manager->updateOrFail($this->manager->getRepository()->findOneById($id), [
-            'status'             => $response->getStatusCode(),
-            'time'               => $time,
-            'response'           => ['headers' => $response->headers->all(), 'body' => $response->getContent()],
+            'status'   => $response->getStatusCode(),
+            'time'     => $time,
+            'response' => ['headers' => $response->headers->all(), 'body' => $response->getContent()],
         ]);
     }
 }
